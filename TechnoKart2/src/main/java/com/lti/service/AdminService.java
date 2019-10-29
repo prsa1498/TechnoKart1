@@ -21,6 +21,12 @@ public class AdminService {
 		//sending email code here
 	}
 	
+	public void remove(String r_name) {
+		System.out.println("hii2");
+		adminDao.remove(r_name);
+		System.out.println("hii3");
+	}
+	
 	public String reset(String oldPass,String newPass) {
 		 System.out.println("now im here");
 	   String s1= adminDao.reset(oldPass,newPass);

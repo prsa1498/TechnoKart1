@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Reset password</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<jsp:include page="adminheader.jsp" />
 <h1 align="center">Change Password</h1>
 <form action="aReset.lti" method="post">
 <table  align="center">
@@ -23,5 +25,6 @@
    </tr>
    </table>
    </form>
+      <jsp:include page="footer.jsp" />
    </body>
 </html>

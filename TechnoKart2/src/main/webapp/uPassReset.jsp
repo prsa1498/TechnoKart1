@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>User Reset Password</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<jsp:include page="adminheader.jsp" />
 <h1 align="center">Change Password</h1>
 <form action="uReset.lti" method="post">
 <table  align="center">
@@ -19,9 +21,10 @@
    <td><input type="password"  name="new_pass" id="u_pass" /></td>
    </tr>
    <tr>
-   <td><button type="submit" >Reset</button></td>
+   <td><button type="submit" class="button">Reset</button></td>
    </tr>
    </table>
    </form>
+      <jsp:include page="footer.jsp" />
    </body>
 </html>

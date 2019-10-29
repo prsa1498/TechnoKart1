@@ -57,4 +57,13 @@ public class AdminDao {
 		System.out.println(c1);
 	     return c1;	
     }
+
+	public void remove(String r_name) {
+		String ql = "delete a from RetailerEntity a where a.r_name =:nm ";
+		Query q = entityManager.createQuery(ql);
+		System.out.println("now im here");
+		q.setParameter("nm", r_name);
+		int i= q.executeUpdate();
+		System.out.println(i+ " rows deleted.");
+	}
 }

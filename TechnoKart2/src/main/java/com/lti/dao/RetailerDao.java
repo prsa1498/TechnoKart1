@@ -6,26 +6,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.entity.ProductEntity;
+import com.lti.entity.RetailerEntity;
 
 @Repository
 public class RetailerDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public List fetch(String r_email) {
+
+	public RetailerEntity fetch(String r_email) {
 		 
 		System.out.println("now im here");
-		String ql = "select r.r_pass from RetailerEntity r where r.r_email =:em ";
+		String ql = "select r from RetailerEntity r where r.r_email =:em ";
 		Query q = entityManager.createQuery(ql);
 		System.out.println("now im here");
 		q.setParameter("em", r_email);
-		List c1 = q.getResultList();
-		System.out.println(c1);
-	     return c1;	
+		RetailerEntity retEntity=(RetailerEntity) q.getSingleResult();
+		
+	     return retEntity;	
      }
 	
 	@Transactional
@@ -56,4 +59,49 @@ public class RetailerDao {
 		//entityManager.merge(customerEntity);
 		System.out.println("hi5");
 	}
+	
+	@Transactional
+	public void setImg(String pname, String imagetolink) {
+		 
+		System.out.println("now im in dao");
+		String ql = "update ProductEntity set imagetolink = :image where p_name = :pn ";
+		Query q = entityManager.createQuery(ql);
+		System.out.println("now im here");
+		q.setParameter("image",imagetolink);
+		q.setParameter("pn", pname);
+		int i=q.executeUpdate();
+		
+     }
+	
+	@Transactional
+	public void remove(int id)
+	{
+		String ql = "delete from RetailerEntity r where r.r_id = :id";
+		Query q = entityManager.createQuery(ql);
+		q.setParameter("id", id);
+		q.executeUpdate();
+		System.out.println("Record Deleted");
+	}
+	
+	public List fetchDetail() {
+		System.out.println("now im here");
+		String ql = "select r from RetailerEntity r ";
+		Query q = entityManager.createQuery(ql);
+		System.out.println("now im here");
+		//q.setParameter("em", r_email);
+		List c1 = q.getResultList();
+		System.out.println(c1);
+	     return c1;	
+     }
+	
+	public List fetchProducts() {
+		System.out.println("now im here");
+		String ql = "select p from ProductEntity p";
+		Query q = entityManager.createQuery(ql);
+		System.out.println("now im here");
+		//q.setParameter("em", r_email);
+		List c1 = q.getResultList();
+		System.out.println(c1);
+	     return c1;	
+     }
 }

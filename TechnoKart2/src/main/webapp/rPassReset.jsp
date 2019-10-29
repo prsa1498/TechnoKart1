@@ -4,24 +4,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Retailer Set password</title>
+<title>Retailer Reset Password</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<h1 align="center">Change Password</h1>
-<form action="rReset.lti" method="post">
-<table  align="center">
-<tr>
-   <td>Current password</td>
-   <td><input type="password"  name="old_pass" id="r_pass" /></td>
-   </tr>
-<tr>
-   <td>New password</td>
-   <td><input type="password"  name="new_pass" id="r_pass" /></td>
-   </tr>
-   <tr>
-   <td><button type="submit" >Reset</button></td>
-   </tr>
-   </table>
-   </form>
-   </body>
+<jsp:include page="adminheader.jsp" />
+<div align="center">
+<div class="signup">
+<fieldset>
+<form method="post" action="rReset.lti">
+
+<h1>Change Password</h1>
+  <table >
+               <tr>
+<td>Current password:</td>
+                   <td> <input type="password"  name="old_pass" id="r_pass" /></td>
+               </tr>
+               
+               <tr>
+                   <td>New password:</td>
+                   <td><input type="password"  name="new_pass" id="r_pass" /></td>
+               </tr>
+           <tr>
+                   <td>&nbsp;</td>
+                   <td><button type="submit" class="button">Reset</button></td>
+               </tr>
+           </table>
+           </form>
+           By creating an account,you agree to Technocart's Conditions of Use and Privacy Notice.<br>
+<br>
+</fieldset>
+   <jsp:include page="footer.jsp" />
+</body>
 </html>

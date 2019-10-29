@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,11 @@ public class CartService {
 	{
 		String s1= cartDao.addProd(p_id,u_id);
 		return s1;
+	}
+	
+	public List showCart(int u_id)
+	{
+		List pl=cartDao.displayCart(u_id);
+		return pl;
 	}
 }

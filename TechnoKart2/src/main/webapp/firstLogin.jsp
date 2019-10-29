@@ -1,89 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html>
 <head>
-<style>
-    body
-    {
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-            align-items: center;
-            padding: 4%;
-    }
-    .class1{
-            background-color:rgb(240,240,240);
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-            align-items: center;
-            width: 20vw;
-            height: 40vh;
-            margin-top: 10vh;
-            border:1px solid rgba(15, 1, 1, 0.397);
-            border-radius: 5px;
-            font-family: Arial;
-            font-size: 85%;
-            padding: 1.5%;
-            margin: auto;
-    }
-    input[type="text" ]{
-        padding:1.5%;
-        width: 98%;
-        margin:5%;
-        margin-top: 1%;
-        border-radius: 2px;
-    }
-    input[type="password" ]{
-        padding:1.5%;
-        margin: 5%;
-        width: 98%;
-        margin-top: 1%;
-        border-radius: 2px;
-    }
-    input[type="submit" ]{
-        margin: 5%;
-        margin-bottom: 5%;
-    }
-    input:focus{
-        border-radius:2px;
-    
-        outline:none;
-        box-shadow: 0 2px 4px 0 rgb(128,128,128), 0 3px 10px 0 rgb(128,128,128);
-    } 
-    .text{
-        margin:3%;
-        font-size: 150%;
-        font-family:Georgia;
-    }
-    span{
-        align-self: flex-start;
-        padding:1%;
-    }
-</style>
+<meta charset="UTF-8">
+ 
+<title>Login Page</title>
+ 
+<link rel="stylesheet" type="text/css" href="styles.css">
+ 
 </head>
 <body>
-        <div class="class1">
-        <div class="text">SIGN IN</div>
+ 
+   <jsp:include page="header.jsp" />
+   <jsp:include page="menu.jsp" />
+ 
+   <div class="login-container">
+   <div  align="center">
+ <h2 align="center">Login</h2>
+       <h3>Enter username and password</h3>
+       <br>
        <form method="post" action="login.lti">
-        <span> Enter your Email </span>
-        <input type="text"  name="u_email" id="Email" autocomplete="on"  />
-        <span>Enter your password </span>
-        <input type="password"  name="u_pass" id="Password" placeholder="minimum 6 characters"/>
-        <button type="submit">Sign in</button>
-        <hr size="2" width="50%" noshade style="color:#000000" align="center" />
-        <span>Forgot password? 
-                <a href="uPassReset.jsp">Reset password</a>
-        </span>        
-                <span>Log in as
-                        <a href="retailerLogin.jsp">Retailer</a>
-                </span>
-         
-                <span>Log in as
-                        <a href="adminLogin.jsp">Admin</a>
-                </span>
-          </div>    
-</form> 
+           <table>
+               <tr>
+                   <td>Email Address *</td>
+                   <td><input name="u_email" required/></td>
+               </tr>
+ 
+               <tr>
+                   <td>Password *</td>
+                   <td><input type="password" name="u_pass" required/></td>
+               </tr>
+           </table>
+           <button type="submit" class="button">Sign in</button>
+</form>
+     <p align="center">  Forgot password? <a href="forgotPassword.jsp">Click here</a></p><br>
+       
+       Don't have an account? <a href="signUp.jsp">Sign Up</a><br><br>
+       
+   Are you a <a href="retailerLogin.jsp">Retailer</a>?
+Or an <a href="adminLogin.jsp">Admin</a>?
+ 
+   </div>
+ </div>
+   <jsp:include page="footer.jsp" />
 </body>
 </html>

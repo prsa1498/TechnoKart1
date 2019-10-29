@@ -15,11 +15,6 @@ public class CustomerService {
 	private CustomerDao customerDao;
 	
 	public Object get(String u_email) {
-		 System.out.println("now im here");
-		 //CustomerEntity customerEntity=  (CustomerEntity) customerDao.fetch(u_email);
-/*		Iterator i = c1.iterator();
-		CustomerEntity c2 = (CustomerEntity) i.next();*/
-		
 		return customerDao.fetch(u_email);
 	}
 	
@@ -30,9 +25,10 @@ public class CustomerService {
 	}
 	
 	public void register(CustomerEntity customerEntity) {
-		System.out.println("hii2");
 		customerDao.save(customerEntity);
-		System.out.println("hii3");
-		//sending email code here
 		}
+
+	public String change(String u_add, String u_pass) {
+		return customerDao.change(u_add,u_pass);
+	}
 }

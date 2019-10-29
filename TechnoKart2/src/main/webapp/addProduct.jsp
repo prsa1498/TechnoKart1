@@ -9,11 +9,13 @@ function alertSubmit(){
 alert("Product's Details has been added successfully!!");
 } 
 </script>  
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<jsp:include page="adminheader.jsp" /> 
 <h1 align="center">Add Product</h1>
-<form method="post" action= "addProduct.lti" enctype="multipart/form-data"  >
-<table>
+<form method="post" action= "addProduct.lti" modelAttribute="uploadForm" enctype="multipart/form-data"  >
+<table align="center">
 <tr>
     <td>Product's Name</td>
     <td><input type="text" name="p_name"/></td></tr>
@@ -31,13 +33,12 @@ alert("Product's Details has been added successfully!!");
      <td><select name="p_category">
      <option name="p_category">Mobile</option>
      <option name="p_category">Headphones</option>
+     <option name="p_category">Camera</option>
      </select></td></tr>   
-<tr>
-     <td><input type="file" name="p_img"  /></td></tr>                                 
-<tr>
-     <td><button type="submit">Submit</button></td>
-     <td><input type="button" value="Back" onclick="location.href='firstpage.jsp'"/></td></tr>
+     <td><button type="submit" class="button">Submit</button></td>
+     <td><input type="button" value="Back" class="button" onclick="location.href='retFirst.jsp'"/></td></tr>
 </table>
 </form>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

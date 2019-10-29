@@ -24,10 +24,6 @@ public class CustomerDao {
 			Query q = entityManager.createQuery(ql);
 			System.out.println("now im here");
 			q.setParameter("em", u_email);
-			/*CustomerEntity customerEntity= (CustomerEntity)q.getSingleResult();
-			System.out.println(customerEntity);*/
-
-			System.out.println("qwert");
 		return q.getSingleResult();
 	}
 	
@@ -56,8 +52,28 @@ public class CustomerDao {
 	public void save(CustomerEntity customerEntity) {
 		System.out.println("hii4");
 		entityManager.persist(customerEntity);
-		//entityManager.merge(customerEntity);
 		System.out.println("hi5");
+	}
+
+	@Transactional
+	public String change(String u_add, String u_pass) {
+		String ql = "update CustomerEntity set u_pass = :newPass where u_add = :address";
+		Query q = entityManager.createQuery(ql);
+		System.out.println("now im here");
+		q.setParameter("newPass", u_pass);
+		q.setParameter("address", u_add);
+		int result = q.executeUpdate();
+		String s1;
+		if( result==1)
+		{
+	      s1="SUCCESS";		
+		}
+		else
+		{
+	      s1="FAILURE";
+		}
+		return s1;
+		
 	}
 	
 }

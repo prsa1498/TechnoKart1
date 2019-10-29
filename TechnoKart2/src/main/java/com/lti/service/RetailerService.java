@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.dao.RetailerDao;
 import com.lti.entity.ProductEntity;
+import com.lti.entity.RetailerEntity;
 
 @Service
 public class RetailerService {
@@ -22,18 +23,45 @@ public class RetailerService {
 		//sending email code here
 	}
 	
+	public void addImg(String pname,String imagetolink) {
+		 System.out.println("now im here");
+	   retailerDao.setImg(pname,imagetolink);
+		
+	}
+	
 	public String reset(String oldPass,String newPass) {
 		 System.out.println("now im here");
 	   String s1= retailerDao.reset(oldPass,newPass);
 		return s1;
 	}
 	
-	public List get(String r_email) {
+	public RetailerEntity get(String r_email) {
 		 System.out.println("now im here");
-		List c1=  retailerDao.fetch(r_email);
+		 RetailerEntity retEntity=(RetailerEntity) retailerDao.fetch(r_email);
 /*		Iterator i = c1.iterator();
 		CustomerEntity c2 = (CustomerEntity) i.next();*/
-		
+		return retEntity;
+	}
+	
+	public List getRetailer() {
+		 System.out.println("now im here");
+		List c1=  retailerDao.fetchDetail();
+/*		Iterator i = c1.iterator();
+		CustomerEntity c2 = (CustomerEntity) i.next();*/
 		return c1;
 	}
+	
+	public List getProd() {
+		 System.out.println("now im here");
+		List c1=  retailerDao.fetchProducts();
+/*		Iterator i = c1.iterator();
+		CustomerEntity c2 = (CustomerEntity) i.next();*/
+		return c1;
+	}
+	
+    public void remove(int id)
+	   {
+		retailerDao.remove(id);
+	   }
+
 }
